@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Create DOM elements</title>
+		<meta charset="UTF-8">
+	</head>
+	<body>
+		<script>
+			// a JavaScript code here ...
+			let table = document.createElement("table")
+			let row0 = table.insertRow(0);
+			let cell00 = row0.insertCell(0);
+			let cell01 = row0.insertCell(1);
+			cell00.innerHTML = "1"
+			cell01.innerHTML = "2"
+			cell00.setAttribute("align", "center")
+			cell01.setAttribute("align", "center")
+			
+			let row1 = table.insertRow(1);
+			let cell10 = row1.insertCell(0);
+			let cell11 = row1.insertCell(1);
+			cell10.innerHTML = "3"
+			cell11.innerHTML = "4"
+			cell10.setAttribute("align", "center")
+			cell11.setAttribute("align", "center")
+
+			table.setAttribute("border", "1")
+			table.setAttribute("width", "50%")
+			document.getElementsByTagName("body")[0].appendChild(table)
+
+			// :(
+			
+		</script>
+	</body>
+</html>

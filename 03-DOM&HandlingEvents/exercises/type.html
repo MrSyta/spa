@@ -20,10 +20,21 @@
 		Przeciw nim sterczy biała, wąska, zaostrzona,<br>
 		Jak głaz bodzący morze, reduta Ordona.</p>
 		
-		<textarea rows="15" cols="50"></textarea><br>
+		<textarea rows="15" cols="50" onkeypress="start()"></textarea><br>
+		<p id="info"></p>
 		
 		<script>
 			// a JavaScript code here ...
+			function start(){
+				let time = setTimeout(stop, 30000)
+			}
+
+			function stop(){
+				let text = document.getElementsByTagName("textarea")[0].value
+				let words = text.split(' ').length
+				let chars = text.length
+				document.getElementById("info").innerHTML = `${words} words, ${chars} characters`
+			}
 			
 		</script>
 		

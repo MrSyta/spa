@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>Fill in a form</title>
+	<meta charset="UTF-8">
+</head>
+
+<body>
+	<h1>Filling in a form</h1>
+	<form>
+		<p>University:<br><input type="text", name="university"></p>
+		<p>Address:<br><input type="text", name="address"></p>
+		<button type="button", onclick="fill()">Hint</button>
+	</form>
+
+	<script>
+		// a JavaScript code here ...
+		function fill(){
+		let university = "Cracow University of Economics";
+		let address = "Rakowicka 27, Krakow, POLAND";
+
+		document.getElementsByName("university")[0].value = university
+		document.getElementsByName("address")[0].value = address
+		}
+
+	</script>
+</body>
+
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Shopping List</title>
+    <meta charset="UTF-8">
+</head>
+
+<body>
+    <h1>Shopping List</h1>
+    <p>
+        New item: <input type="text" name="item">
+        <button onclick="add()" type="button">Add</button>
+    </p>
+    <h3>List of items</h3>
+    <ol id="list">
+        <li>cooking oil</li>
+        <li>breakfast cereal</li>
+        <li>bread</li>
+    </ol>
+
+    <script>
+    	// a JavaScript code here ...
+        function add(){
+            let new_element = document.createElement("li")
+            let item = document.createTextNode(document.getElementsByName("item")[0].value)
+            new_element.appendChild(item)
+            document.getElementById("list").appendChild(new_element)
+            
+        }
+
+        $(document).ready(function(){
+            $("li").dblclick(function(){
+                $(this).remove();
+            });
+        });
+
+    </script>
+</body>
+
+</html>
