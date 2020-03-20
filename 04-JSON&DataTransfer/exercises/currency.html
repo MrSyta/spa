@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Currency</title>
+		<meta charset="UTF-8">
+	</head>
+	<body>
+		<h1>Currency</h1>
+        
+        <input type="button" value="USD" onclick="connect('exchangerates/rates/c/usd/today/', 'usd')">
+        <p id="usd"></p>
+
+        <input type="button" value="EUR" onclick="connect('exchangerates/rates/c/eur/today/', 'eur')">
+        <p id="eur"></p>
+
+        <input type="button" value="GBP" onclick="connect('exchangerates/rates/c/gbp/today/', 'gbp')">
+        <p id="gbp"></p>
+		
+		<script>
+			function connect(uri, id){
+
+                var domain = "http://api.nbp.pl/api/"
+				var method = 'GET';
+				var URL = domain + uri;
+				var xhr = new XMLHttpRequest();
+				xhr.onreadystatechange = function(){display(this, id);};
+				xhr.open(method, URL);
+				xhr.send();
+			}
+			function display(r, id){
+
+				if(r.readyState == 4 && r.status == 200){
+					document.getElementById(id).innerHTML = JSON.parse(r.response).rates[0].bid
+				}
+			};
+		</script>
+
+	</body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>People Framework</title>
+        <meta charset="UTF-8">
+
+        <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.css">
+        <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+	</head>
+	<body>
+		<h1>People Framework</h1>
+		<input type="button" value="show" onclick="openJSON()">
+		<ol id="list"></ol>
+        </ol>
+
+        <table id="table_id" class="display">
+            <thead>
+                <tr>
+                    <th>Column 1</th>
+                    <th>Column 2</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Row 1 Data 1</td>
+                    <td>Row 1 Data 2</td>
+                </tr>
+                <tr>
+                    <td>Row 2 Data 1</td>
+                    <td>Row 2 Data 2</td>
+                </tr>
+            </tbody>
+        </table>
+
+<!-- lokalnie nie działa -->
+		<script>
+			// function openJSON (){
+			// 	fetch("./people.json")
+			// 		.then(function(resp) {
+			// 			return resp.json();
+			// 		})
+			// 		.then(function(data) {
+            //             for(const property in data){
+            //                 let new_element = document.createElement("li")
+            //                 let item = document.createTextNode(`${data[property].name} ${data[property].surname} ${data[property].age}`)
+            //                 new_element.appendChild(item)
+            //                 document.getElementById("list").appendChild(new_element)
+			// 			}}
+            //         )}
+
+                    $(document).ready( function () {
+                        $('#table_id').DataTable()
+                    })
+		</script>
+
+	</body>
+</html>

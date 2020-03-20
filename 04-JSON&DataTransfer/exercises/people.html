@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>People</title>
+		<meta charset="UTF-8">
+	</head>
+	<body>
+		<h1>People</h1>
+		<input type="button" value="show" onclick="openJSON()">
+		<ol id="list"></ol>
+        </ol>
+
+<!-- lokalnie nie działa -->
+		<script>
+			function openJSON (){
+				fetch("./people.json")
+					.then(function(resp) {
+						return resp.json();
+					})
+					.then(function(data) {
+                        for(const property in data){
+                            let new_element = document.createElement("li")
+                            let item = document.createTextNode(`${data[property].name} ${data[property].surname} ${data[property].age}`)
+                            new_element.appendChild(item)
+                            document.getElementById("list").appendChild(new_element)
+						}})
+			}
+		</script>
+
+	</body>
+</html>

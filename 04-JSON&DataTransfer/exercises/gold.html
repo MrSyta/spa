@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Gold</title>
+		<meta charset="UTF-8">
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
+	</head>
+	<body>
+		<h1>Gold charts</h1>
+        <canvas id="chart" width="300" height="100"></canvas>
+
+		<script>
+				var method = 'GET';
+				var URL = "http://api.nbp.pl/api/cenyzlota/last/10";
+				var xhr = new XMLHttpRequest();
+				xhr.onreadystatechange = function(){display(this);};
+				xhr.open(method, URL);
+				xhr.send();
+			function display(r){
+
+				if(r.readyState == 4 && r.status == 200){
+					let myChart = document.getElementById("chart").getContext("2d")
+					let goldData = document.getElementById("chart").innerHTML = JSON.parse(r.response)
+					
+					let chartData = []
+					let chartLabels = []
+
+					for(const property in goldData){
+						chartData.push(goldData[property].cena)
+						chartLabels.push(goldData[property].data)
+					}
+
+					console.log(r.response)
+
+					let goldChart = new Chart(myChart, {
+						type: "bar",
+						data: {
+							labels: chartLabels,
+							datasets:[{
+								label: "Value",
+								data: chartData,
+								backgroundColor: [
+                					'rgba(255, 99, 132, 0.2)',
+                					'rgba(54, 162, 235, 0.2)',
+                					'rgba(255, 206, 86, 0.2)',
+                					'rgba(75, 192, 192, 0.2)',
+                					'rgba(153, 102, 255, 0.2)',
+                					'rgba(255, 159, 64, 0.2)',
+									'rgba(0, 0, 0, 0.2)',
+                					'rgba(54, 100, 235, 0.2)',
+                					'rgba(255, 206, 90, 0.2)',
+                					'rgba(100, 192, 192, 0.2)',
+            ],
+							}]
+						},
+						options: {}
+					})
+
+				}
+			};
+		</script>
+
+	</body>
+</html>
