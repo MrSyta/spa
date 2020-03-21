@@ -3,57 +3,57 @@
 	<head>
 		<title>People Framework</title>
         <meta charset="UTF-8">
-
         <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.css">
+        <script type="text/javascript" charset="utf8" src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.7.1.min.js"></script>
         <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.js"></script>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
 
 	</head>
 	<body>
 		<h1>People Framework</h1>
-		<input type="button" value="show" onclick="openJSON()">
-		<ol id="list"></ol>
-        </ol>
 
-        <table id="table_id" class="display">
+        <table id="table" class="display" style="width:100%">
             <thead>
                 <tr>
-                    <th>Column 1</th>
-                    <th>Column 2</th>
+                    <th>Name</th>
+                    <th>Surname</th>
+                    <th>Age</th>
+                    <th>Country</th>
+                    <th>Email</th>
                 </tr>
             </thead>
-            <tbody>
+            <tfoot>
                 <tr>
-                    <td>Row 1 Data 1</td>
-                    <td>Row 1 Data 2</td>
+                    <th>Name</th>
+                    <th>Surname</th>
+                    <th>Age</th>
+                    <th>Country</th>
+                    <th>Email</th>
                 </tr>
-                <tr>
-                    <td>Row 2 Data 1</td>
-                    <td>Row 2 Data 2</td>
-                </tr>
-            </tbody>
+            </tfoot>
         </table>
 
-<!-- lokalnie nie działa -->
 		<script>
-			// function openJSON (){
-			// 	fetch("./people.json")
-			// 		.then(function(resp) {
-			// 			return resp.json();
-			// 		})
-			// 		.then(function(data) {
-            //             for(const property in data){
-            //                 let new_element = document.createElement("li")
-            //                 let item = document.createTextNode(`${data[property].name} ${data[property].surname} ${data[property].age}`)
-            //                 new_element.appendChild(item)
-            //                 document.getElementById("list").appendChild(new_element)
-			// 			}}
-            //         )}
+				fetch("./people.json")
+					.then(function(resp) {
+						return resp.json();
+					})
+					.then(function(data) {
+                        for(const property in data){
+                            $(document).ready( function () {
+                                var table =  $('#table').DataTable()
+                                
+                                table.row.add([data[property].name,
+                                               data[property].surname,
+                                               data[property].age,
+                                               data[property].country,
+                                               data[property].email]).draw();
+                            
+                        })
+						}}
+                    )
 
-                    $(document).ready( function () {
-                        $('#table_id').DataTable()
-                    })
-		</script>
+        </script>
 
 	</body>
 </html>
