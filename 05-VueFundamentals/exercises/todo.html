@@ -4,16 +4,28 @@
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 </head>
 <body>
+  <div id="app">
+    <h2>Do wykonania</h2>
+    <ol>
+      <li v-for="todo in sorted">{{todo}}</li>
+    </ol>
+
+  </div>
   <script>
     var app = new Vue({
       el: '#app',
       data: {
-        todo: [
+        todos: [
           'Purchase two tickets to cinema',
           'Feed cat',
           'Pay cable bill',
-          'Go shopping'
-      }
+          'Go shopping',
+      ]},
+      computed: {
+        sorted: function() {
+          this.todos.sort()
+          return this.todos
+      }}
     });
   </script>
 
