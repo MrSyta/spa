@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+  <div id="app">
+    <h1>CV</h1>
+    <h3>Imie</h3>
+    <input type="text" v-model="cv.name">
+    <h3>Nazwisko</h3>
+    <input type="text" v-model="cv.surname">
+    <h3>Wiek</h3>
+    <input type="number" v-model.number="cv.age">
+    <h3>Płeć</h3>
+    <input type="checkbox" v-model="cv.isMale">Męszczyzna
+    <input type="checkbox" v-model="cv.isFamale">Kobieta
+    <h3>Wykształcenie</h3>
+    <select v-model="cv.education">
+        <option >Brak</option>
+        <option >podstawowe</option>
+        <option >srednie</option>
+        <option >wyższe</option>
+    </select>
+    <h3>Umiejętnośći</h3>
+    <input type="checkbox" value="obsługa komputera" v-model="cv.skills">Obsługa komputera
+    <input type="checkbox" value="prawo jazdy" v-model="cv.skills">Prawo jazdy
+    <input type="checkbox" value="kreatywność" v-model="cv.skills">Kreatywność
+    <input type="checkbox" value="praca w zespole" v-model="cv.skills">Praca w zespole
+
+    <br /><br />
+    <button type="button" @click="saveData()">Save</button>
+    <button type="button" @click="readData()">Read</button>
+    <ul v-if="readButton">
+        <li v-for="(value, key) in readData()">{{ key }}: {{ value }}</li>
+    </ul>
+  </div>
+  <script>
+    var app = new Vue({
+      el: '#app',
+      data: {
+          readButton: false,
+          cv: {
+            name:'',
+            surname: '',
+            age: 0,
+            isFamale: false,
+            isMale: false,
+            education: '',
+            skills: []
+      }},
+      methods: {
+          saveData(){
+              localStorage.setItem('cv', JSON.stringify(this.cv))
+          },
+          readData(){
+              this.readButton = true
+              return JSON.parse(localStorage.getItem('cv'))
+              }
+          }
+      }
+    );
+  </script>
+
+</body>
+</html>

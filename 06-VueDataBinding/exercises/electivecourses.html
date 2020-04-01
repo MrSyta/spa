@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+  <div id="app">
+    <input type="checkbox" value="PSM"  v-model="subjects">PSM
+    <input type="checkbox" value="SPA" v-model="subjects">SPA
+    <input type="checkbox" value="PP5" v-model="subjects">PP5
+    <input type="checkbox" value="ASK" v-model="subjects">ASK
+    <input type="checkbox" value="SO" v-model="subjects">SO
+    <p>selected subjects: {{subjects.length}}</p>
+
+  </div>
+  <script>
+    var app = new Vue({
+      el: '#app',
+      data: {
+        subjects: []
+      },
+    });
+  </script>
+
+</body>
+</html>
