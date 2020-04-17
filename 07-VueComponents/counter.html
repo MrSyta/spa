@@ -6,18 +6,17 @@
 <body>
 
   <div id="app">
-    <university></university>
+    <counter></counter>
   </div>
 
 <script>
-  Vue.component('university', {
+  Vue.component('counter', {
     data: function(){
       return{
-        name: "Cracow University of Economics",
-        address: "31-510 Kraków, Rakowicka 27, POLAND"
+        count: 0
       }
     },
-    template: "<div><h1>{{ name }}</h1><p>{{ address }}</p></div>"
+    template: "<div><h1>{{ count }}</h1><button @click=count++>zwiększ</button><button @click=count-->zmiejsz</button></div>"
   })
 
   new Vue({el: "#app"})

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+
+  <div id="app">
+    <favourite-film title="Mroczny rycerz" director="Christopher Nolan" year=2008></favourite-film>
+    <favourite-film title="Wyspa tajemnic" director="Martin Scorsese" year=2010></favourite-film>
+    <favourite-film title="Obecność" director="James Wan" year=2013></favourite-film>
+  </div>
+
+<script>
+  
+  Vue.component("favourite-film",{
+    template: "<div><h1>{{ title }}</h1><p>{{ director }}</p><p>{{ year }}</p></div>",
+    props: {
+      title: String,
+      director: String,
+      year: Number
+    }
+  })
+
+  new Vue({el: "#app"})
+</script>
+</body>
+</html>

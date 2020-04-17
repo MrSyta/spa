@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+
+  <div id="app">
+      <h1>Architektura von Neumanna</h1>
+      <ul>
+      <architecture v-for="component in components" :name="component"></architecture>
+      </ul>
+  </div>
+
+<script>
+  Vue.component('architecture-list')
+
+  Vue.component('architecture', {
+    template: "<li>{{ name }}</li>",
+    props: {
+        name: String
+    }
+  })
+
+  new Vue({
+      el: "#app",
+      data: {
+          components: ["pamięć", 
+                       "jednostka sterująca", 
+                       "jednostka arytmetyczno-logiczna", 
+                       "urządzenia wejścia/wyjścia"]
+      }
+      })
+</script>
+</body>
+</html>
